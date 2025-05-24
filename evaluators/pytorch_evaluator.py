@@ -10,7 +10,7 @@ class PyTorchEvaluator(EvaluatorBase):
     def __init__(self, model_path):
         super().__init__(model_path)
         # Handle different PyTorch save formats
-        checkpoint = torch.load(model_path, map_location='cpu')
+        checkpoint = torch.load(model_path, map_location='cpu', weights_only=False)
 
         if isinstance(checkpoint, dict):
             # If it's a checkpoint dictionary, try to extract the model
